@@ -30,14 +30,14 @@ export function DestinationPage({ destination, image, title, description, embed}
           </div>
         </div>
     
-        <div className="w-full mx-auto py-50 md:py-10 flex max-w-100 md:max-w-300 md:flex-row flex-col justify-center gap-26">
+        <div className="w-full mx-auto py-50 md:py-10 flex max-w-85 md:max-w-300 md:flex-row flex-col justify-center gap-26">
           <div className="md:w-160 md:pr-6">
             <h1 className="font-bold text-2xl">{title}</h1><br/>
             <p className="text-xl text-justify">{description}</p>  
           </div>  
     
           <div>
-             <iframe className="border-0 h-100 w-100 rounded-xl" src={embed} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+             <iframe className="border-0 h-85 w-85 rounded-xl" src={embed} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>
