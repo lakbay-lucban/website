@@ -19,6 +19,7 @@ type Params = {
 };
 
 export async function generateStaticParams() {
+  console.log("GENERATING SLUGS:", data.map(d => d.link));
   return data.map(d => ({
     slug: d.link // must match your `[slug]` param
   }));
