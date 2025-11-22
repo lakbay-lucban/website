@@ -25,16 +25,16 @@ export async function generateStaticParams() {
 }
 
 export default function Page({ params }: { params: Params }) {
-  const slug = params.slug;
+  const slug = params.slug.toLowerCase().trim();
 
-  const dest = (data as Destination[]).find(d => d.link === slug);
+  const dest = (data as Destination[]).find(d => d.link.toLowerCase().trim() === slug);
 
 //   if (!dest) {
 //     notFound();
 //   }
-if (!dest) {
-  return <h1>DESTINATION NOT FOUND: {params.slug}</h1>;
-}
+    if (!dest) {
+    return <h1>DESTINATION NOT FOUND: {params.slug}</h1>;
+    }
 
   const heroImage = dest!.showcaseImages.length > 0 ? dest!.showcaseImages : [dest!.preview];
 
