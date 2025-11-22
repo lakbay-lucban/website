@@ -25,9 +25,12 @@ export async function generateStaticParams() {
 }
 
 export default function Page({ params }: { params: Params }) {
-  const slug = params.slug.toLowerCase().trim();
+  const normalize = (s: string | undefined) => s?.toLowerCase().trim() ?? "";
 
-  const dest = (data as Destination[]).find(d => d.link.toLowerCase().trim() === slug);
+    const slug = normalize(params.slug);
+
+    const dest = data.find(d => normalize(d.link) === slug);
+
 
 //   if (!dest) {
 //     notFound();
