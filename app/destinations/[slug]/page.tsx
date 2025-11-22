@@ -25,22 +25,20 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function Page({ params }: { params: Params }) {
+export default function Page({ params }: { params: { slug?: string } }) {
+  const slug = params.slug;
+  if (!slug) {
+    return <h1>No destination specified</h1>;
+  }
+
   const normalize = (s: string | undefined) => s?.toLowerCase().trim() ?? "";
+  const dest = data.find(d => normalize(d.link) === normalize(slug));
 
-    const slug = normalize(params.slug);
+  if (!dest) {
+    return <h1>DESTINATION NOT FOUND: {slug}</h1>;
+  }
 
-    const dest = data.find(d => normalize(d.link) === slug);
-
-
-//   if (!dest) {
-//     notFound();
-//   }
-    if (!dest) {
-    return <h1>DESTINATION NOT FOUND: {params.slug}</h1>;
-    }
-
-  const heroImage = dest!.showcaseImages.length > 0 ? dest!.showcaseImages : [dest!.preview];
+  const heroImage = dest.showcaseImages.length > 0 ? dest.showcaseImages : [dest.preview];
 
   return (
     <DestinationPage
