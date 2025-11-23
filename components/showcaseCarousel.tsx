@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 import { useState, useEffect } from "react";
@@ -14,8 +14,8 @@ export function ShowcaseCarousel({images}: ShowcaseCarouselProps) {
     const imageList = Array.isArray(images) ? images : [images];
     const [current, setCurrent] = useState(0);
 
-    const prevImage = () => setCurrent((current - 1 + images.length) % images.length);
-    const nextImage = () => setCurrent((current + 1) % images.length);
+    const prevImage = () => setCurrent((current - 1 + imageList.length) % imageList.length);
+    const nextImage = () => setCurrent((current + 1) % imageList.length);
 
     useEffect(() => {
     if (imageList.length > 1) {
@@ -27,8 +27,10 @@ export function ShowcaseCarousel({images}: ShowcaseCarouselProps) {
     }
     }, [imageList]); 
 
+    
+
   return (
-    <div className="w-full bg-gray-100 relative h-205 md:h-170 z-0">
+    <div className="w-full bg-gray-100 relative h-150 md:h-170 z-0">
         {imageList.map((img, index) => (
           <Image
             key={img}
@@ -44,11 +46,11 @@ export function ShowcaseCarousel({images}: ShowcaseCarouselProps) {
         {imageList.length > 1 && (
             <div className="absolute inset-0 flex items-center justify-between px-4 md:px-10">
                 <Button className="absolute left-4 rounded-full" variant="outline"size="icon" onClick={prevImage}>
-                    <ArrowLeft />
+                    <ChevronLeft className="stroke-5"/>
                 </Button>
 
                 <Button className="absolute right-4 rounded-full" variant="outline" size="icon"onClick={nextImage}>
-                    <ArrowRight />
+                    <ChevronRight className="stroke-5"/>
                 </Button>
             </div>
         )}
