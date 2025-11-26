@@ -5,7 +5,7 @@ import { ShowcaseCarousel } from "@/components/showcaseCarousel";
 import destinations from '@/data/destinations.json';
 
 const alex_brush = Alex_Brush({ subsets: ["latin"], weight: "400"});
-const images = destinations.slice(0, 5).map(d => d.preview);
+const images = destinations.map(d => d.preview);
 
 export default function Home() {
   return (
