@@ -23,7 +23,7 @@ export function DestinationCard({ destination, description, link, preview }: Des
           alt={destination}
           width={200}
           height={200}
-          className="h-[200px] object-cover w-50"
+          className="h-[200px] object-cover w-50 rounded-t-md"
         />
         <CardHeader className="p-2">
           <CardTitle>{destination}</CardTitle>
