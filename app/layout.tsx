@@ -63,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <div className="w-full bg-gray-900 text-white">
+        <div className="fixed top-0 left-0 w-full bg-gray-900 text-white z-50 shadow-md">
           <div className="px-4 md:px-10 py-2 flex flex-wrap justify-between">
 
             <Sheet>
