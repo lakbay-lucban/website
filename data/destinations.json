@@ -86,5 +86,115 @@
     "infoDescription": "Lucban Church stands as a proud symbol of the town’s deep-rooted history and devotion. With its weathered stone walls, intricate details, and serene interiors, the church invites visitors to pause, reflect, and appreciate its timeless charm. Surrounding it is a lively plaza where locals gather, festivals unfold, and traditions continue to thrive. Whether you’re here for prayer, history, or cultural immersion, Lucban Church offers a meaningful glimpse into the town’s past and present.",
     "mapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.3640800205726!2d121.55105667483635!3d14.114673688789285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd53f61b9879d3%3A0x9b7acaa7d0246c2e!2sSaint%20Louis%20Bishop%20Parish%20Church!5e0!3m2!1sen!2sph!4v1763799553576!5m2!1sen!2sph",
     "showcaseImages": []
+  },
+  {
+    "category": "resortandhotel",
+    "destination": "Patio Rizal Hotel",
+    "description": "Sampaloc Road",
+    "link": "patio-rizal",
+    "preview": "/patiorizal.jpg",
+    "infoTitle": "Step Into an Elegant Retreat Where Modern Comfort Meets Timeless Ambiance, Perfect for Rest, Leisure, and Memorable Stays in the Heart of Lucban",
+    "infoDescription": "Patio Rizal Hotel offers a harmonious blend of contemporary design and traditional charm, creating a welcoming environment for travelers seeking both relaxation and convenience. Each room is thoughtfully furnished with modern amenities while maintaining a warm, inviting atmosphere. Guests can enjoy peaceful garden views, unwind in cozy common areas, or explore nearby local attractions with ease. Whether you’re visiting for business, a family trip, or a leisurely getaway, the hotel provides a serene haven where every detail is designed to enhance comfort and satisfaction.",
+    "mapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.370891031487!2d121.55498990000001!3d14.1142726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd53f5f6e80a17%3A0xa8dcacf071eae95c!2sPatio%20Rizal%20Hotel!5e0!3m2!1sen!2sph!4v1764407681170!5m2!1sen!2sph",
+    "showcaseImages": []
+  },
+  {
+    "category": "resortandhotel",
+    "destination": "Batis Aramin Resort & Hotel",
+    "description": "",
+    "link": "batis-aramin",
+    "preview": "/batis.jpg",
+    "infoTitle": "Batis Aramin Resort & Hotel: Nature’s Sanctuary at the Foot of Mt. Banahaw — Your Gateway to Lucban’s Heritage and Relaxation",
+    "infoDescription": "Escape the city bustle and rediscover peace at Batis Aramin Resort & Hotel, nestled in the lush greenery of Lucban, Quezon. Surrounded by spring-fed pools, rolling gardens, and panoramic views of Mt. Banahaw, the resort invites you to a refreshing blend of nature and comfort. Whether you’re planning a restful retreat, a family getaway, a pilgrimage to nearby shrines, or an adventure-filled break with friends, Batis Aramin offers more than just a stay — it gives you an experience grounded in serenity, local culture, and the vibrant spirit of Lucban.",
+    "mapsEmbed": "",
+    "showcaseImages": []
+  },
+  {
+    "category": "resortandhotel",
+    "destination": "Paradiso Di Oblefias",
+    "description": "",
+    "link": "paradiso-di-oblefias",
+    "preview": "/oblefias.jpg",
+    "infoTitle": "Paradiso di Oblefias: Your All-in-One Escape in Lucban — Resort, Events & Local Vibes",
+    "infoDescription": "Experience the best of Lucban at Paradiso di Oblefias — a versatile resort, event hall, and staycation spot that offers refreshing pools, cozy accommodations, and a warm, nature-filled ambiance. Whether you’re here to relax, celebrate special moments, or explore Lucban’s heritage and surroundings, Paradiso di Oblefias is your home away from home. Enjoy the peaceful breeze of Sampaloc Road, convenient access to local landmarks, and a welcoming space where memories are made.",
+    "mapsEmbed": "",
+    "showcaseImages": []
+  },
+  {
+    "category": "resortandhotel",
+    "destination": "Villa Zenaida Farm and Resort",
+    "description": "",
+    "link": "villa-zenaida",
+    "preview": "/zenaida.jpg",
+    "infoTitle": "Villa Zenaida Farm & Resort: Your Serene Retreat Amid Lucban’s Nature and Tradition",
+    "infoDescription": "Escape the hustle and bustle and find peace at Villa Zenaida Farm & Resort — a tranquil farm-resort nestled in Lucban, Quezon. Surrounded by the refreshingly cool air, leafy landscapes, and natural rustic charm, it’s where relaxation meets local countryside living. Whether you’re here for a quiet weekend getaway, a restful break from city life, or a base to explore Lucban’s cultural and natural sites — Villa Zenaida offers a calm sanctuary that welcomes you home.",
+    "mapsEmbed": "",
+    "showcaseImages": []
+  },
+  {
+    "category": "resortandhotel",
+    "destination": "SLSU Hotel and Cafe",
+    "description": "",
+    "link": "slsu-hotel-and-cafe",
+    "preview": "/slsu.png",
+    "infoTitle": "SLSU Hotel & Cafe — Comfort, Convenience, and Local Hospitality in the Heart of Lucban",
+    "infoDescription": "Whether you’re visiting for the festivals, heritage sites, or simply passing through, SLSU Hotel & Cafe gives you a cozy and accessible home base right at the center of Lucban. Nestled along Quezon Avenue and just a short stroll from the main campus of Southern Luzon State University (SLSU), it offers guests a blend of comfort, convenience, and student-town charm. From casual coffee breaks to restful stays, this is where travelers, students, and pilgrims meet warm hospitality and easy access to Lucban’s cultural gems.",
+    "mapsEmbed": "",
+    "showcaseImages": []
+  },
+  {
+    "category": "resortandhotel",
+    "destination": "Samkara Restaurant and Garden Resort",
+    "description": "",
+    "link": "samkara",
+    "preview": "/samkara.jpg",
+    "infoTitle": "Samkara Restaurant & Garden Resort — A Balinese-Inspired Sanctuary at the Foot of Mt. Banahaw, Where Nature, Home-Style Cuisine, and Serenity Meet",
+    "infoDescription": "Step into a world of calm and countryside charm at Samkara Restaurant & Garden Resort. Tucked away along Lucban’s lush backdrop and framed by the misty slopes of Mt. Banahaw, Samkara offers a unique escape from the hustle of city life. Whether you seek a peaceful overnight stay, a nature-filled getaway with friends or family, or a relaxing meal surrounded by greens and flowing rivers — this resort promises a warm welcome, a soothing ambiance, and a genuine taste of provincial living.",
+    "mapsEmbed": "",
+    "showcaseImages": []
+  },
+  {
+    "category": "resortandhotel",
+    "destination": "Manasa Botanical Garden Resort",
+    "description": "",
+    "link": "manasa-botanical-garden",
+    "preview": "/manasa.jpg",
+    "infoTitle": "",
+    "infoDescription": "",
+    "mapsEmbed": "",
+    "showcaseImages": []
+  },
+  {
+    "category": "resortandhotel",
+    "destination": "Anthurium Orenas Inn",
+    "description": "",
+    "link": "anthurium-orenas-inn",
+    "preview": "/orenas.jpg",
+    "infoTitle": "Manasa Botanical Garden Resort — A Refreshing Garden Escape in Lucban: Swim, Relax & Experience Local Nature",
+    "infoDescription": "Take a break from the usual and step into the tranquil green haven of Manasa Botanical Garden Resort. Nestled in the barangay of Manasa in Lucban, this resort offers a peaceful retreat amid lush surroundings — perfect for families, barkadas, or anyone looking to unwind, swim, and reconnect with nature while still being within reach of town conveniences. Whether it’s a simple getaway, a summer dip, or a casual group outing, Manasa promises comfort, calm, and a warm welcome.",
+    "mapsEmbed": "",
+    "showcaseImages": []
+  },
+  {
+    "category": "resortandhotel",
+    "destination": "Casa Villasenor Hotel",
+    "description": "",
+    "link": "casa-villasenor",
+    "preview": "/casa-villasenor.png",
+    "infoTitle": "Casa Villaseñor Hotel — Your Cozy & Convenient Home Base in the Heart of Lucban",
+    "infoDescription": "Discover comfort and convenience at Casa Villaseñor Hotel, centrally located along A. Bonifacio / F. Villasenor Street in Lucban. Whether you’re visiting for heritage tours, the festive spirit of town events, or a simple provincial getaway, this hotel offers a welcoming retreat just moments away from Lucban’s main roads, local eateries, and historic sites. With warm hospitality and thoughtful amenities, Casa Villaseñor invites you to experience Lucban with ease and comfort.",
+    "mapsEmbed": "",
+    "showcaseImages": []
+  },
+  {
+    "category": "resortandhotel",
+    "destination": "Casa Esperanza",
+    "description": "",
+    "link": "casa-esperanza",
+    "preview": "/casa-esperanza.jpg",
+    "infoTitle": "Casa Esperanza — A Luxurious Farm‑Style Retreat in Lucban: Where Comfort, Nature & Tranquility Meet",
+    "infoDescription": "Find solace in the green hills of Lucban at Casa Esperanza, a serene getaway built to offer the perfect balance of rustic charm and modern comfort. With lush gardens, a salt‑water pool, cozy casitas, and peaceful surroundings, Casa Esperanza invites guests to unwind, breathe fresh mountain air, and create memorable escapes away from city bustle. Ideal for families, friends, or couples seeking a restful, nature‑filled haven.",
+    "mapsEmbed": "",
+    "showcaseImages": []
   }
 ]
