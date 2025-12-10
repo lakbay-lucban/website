@@ -1,11 +1,10 @@
-"use client";
-
 import { Alex_Brush } from "next/font/google";
 import { ShowcaseCarousel } from "@/components/showcaseCarousel";
-import destinations from '@/data/destinations.json';
+import { retrieveDestinations } from "@/lib/supabase";
+const destinations = await retrieveDestinations();
 
 const alex_brush = Alex_Brush({ subsets: ["latin"], weight: "400"});
-const images = destinations.map(d => d.preview);
+const images = destinations.map(d => d.images);
 
 export default function Home() {
   return (

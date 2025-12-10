@@ -1,4 +1,4 @@
-import data from "@/data/destinations.json";
+import { getDestinationBySlug, getAllDestinationSlugs } from "@/lib/supabase";
 import { DestinationPage } from "@/components/destinationPage";
 import { notFound } from "next/navigation";
 
@@ -7,31 +7,26 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return data.map((d) => ({
-    slug: d.link,
+  const slugs = await getAllDestinationSlugs();
+  return slugs.map((slug) => ({
+    slug,
   }));
 }
 
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
-  const dest = data.find((d) => d.link === slug);
 
-  if (!dest) {
-    return notFound();
-  }
+  const dest = await getDestinationBySlug(slug);
 
-  const heroImages =
-    dest.showcaseImages && dest.showcaseImages.length > 0
-      ? dest.showcaseImages
-      : [dest.preview];
+  if (!dest) return notFound();
 
   return (
     <DestinationPage
       destination={dest.destination}
-      title={dest.infoTitle}
-      description={dest.infoDescription}
-      embed={dest.mapsEmbed}
-      image={heroImages}
+      title={dest.infoTitle ?? dest.title}
+      description={dest.infoDescription ?? dest.description}
+      embed={dest.mapsEmbed ?? dest.embed}
+      image={dest.images}
     />
   );
 }
