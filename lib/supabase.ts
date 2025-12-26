@@ -6,7 +6,9 @@ export const supabase = createClient(
 );
 
 export async function retrieveDestinations(category?: string) {
-  let query = supabase.from("destinations").select("*");
+  let query = supabase
+    .from("destinations")
+    .select("slug, destination, location, images");
 
   if (category) query = query.eq("category", category);
 
@@ -20,23 +22,33 @@ export async function retrieveDestinations(category?: string) {
   return data ?? [];
 }
 
-export async function getAllDestinationSlugs(): Promise<string[]> {
+export async function getAllDestinationSlugs(options?: { excludeCategory?: string; includeCategory?: string }): Promise<string[]> {
   const { data, error } = await supabase
     .from("destinations")
-    .select("slug");
+    .select("slug, category");
 
   if (error) {
     console.error("Error fetching slugs:", error);
     return [];
   }
 
-  return data?.map(d => d.slug as string) ?? [];
+  let filtered = data ?? [];
+
+  if (options?.excludeCategory) {
+    filtered = filtered.filter(d => d.category !== options.excludeCategory);
+  }
+
+  if (options?.includeCategory) {
+    filtered = filtered.filter(d => d.category === options.includeCategory);
+  }
+
+  return filtered.map(d => d.slug as string);
 }
 
 export async function getDestinationBySlug(slug: string) {
   const { data, error } = await supabase
     .from("destinations")
-    .select("*")
+    .select("destination, title, description, location, images, embed")
     .eq("slug", slug)
     .maybeSingle();
 
@@ -46,4 +58,18 @@ export async function getDestinationBySlug(slug: string) {
   }
 
   return data;
+}
+
+
+export async function getDestinationImages(){
+  const { data, error } = await supabase
+    .from("destinations")
+    .select("images");
+
+  if (error) {
+    console.error("Error fetching images:", error);
+    return [];
+  }
+
+  return data?.map(d => d.images as string) ?? [];
 }

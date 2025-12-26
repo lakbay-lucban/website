@@ -23,9 +23,9 @@ export default async function Page({ params }: PageProps) {
   return (
     <DestinationPage
       destination={dest.destination}
-      title={dest.infoTitle ?? dest.title}
-      description={dest.infoDescription ?? dest.description}
-      embed={dest.mapsEmbed ?? dest.embed}
+      title={dest.title}
+      description={dest.description}
+      embed={dest.embed}
       image={dest.images}
     />
   );

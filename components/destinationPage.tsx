@@ -8,9 +8,10 @@ type DestinationPageProps = {
   title: string;
   description: string,
   embed: string;
+  categoryLabel?: string;
 };
 
-export function DestinationPage({ destination, image, title, description, embed}: DestinationPageProps) {
+export function DestinationPage({ destination, image, title, description, embed, categoryLabel = "DESTINATION"}: DestinationPageProps) {
   return (
     <div>
         <div className="w-full bg-gray-100 relative ">
@@ -21,7 +22,7 @@ export function DestinationPage({ destination, image, title, description, embed}
     
             <h1 className="text-white font-bold">
               <span className="text-lg">
-                DESTINATION<br/>
+                {categoryLabel.toUpperCase()}<br />
               </span>
               <span className="text-4xl">
                 {destination}
