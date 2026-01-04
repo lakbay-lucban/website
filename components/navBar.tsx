@@ -19,10 +19,10 @@ const linkClasses = "font-bold text-[17px] focus:bg-gray-900 focus:text-white ho
 
 type Item = {
   name: string;
-  link: string;
+  path: string;
 };
 
-export default function Navbar({ items }: { items: Item[] })  {
+export default function Navbar({ items }: { items: Item[] }) {
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
@@ -35,8 +35,15 @@ export default function Navbar({ items }: { items: Item[] })  {
     e.preventDefault();
     if (!query.trim()) return;
 
-    const cleaned = query.toLowerCase().trim().replace(/\s+/g, "-").replace(/^-+|-+$/g, "");
-    router.push(`/destinations/${cleaned}`);
+    // find the first matching item by name
+    const matchedItem = items.find(item =>
+      item.name.toLowerCase() === query.toLowerCase().trim()
+    );
+
+    if (matchedItem) {
+      router.push(matchedItem.path);
+    }
+
     setQuery("");
     setOpen(false);
   }
@@ -47,7 +54,7 @@ export default function Navbar({ items }: { items: Item[] })  {
         {/* Sheet menu for mobile */}
         <Sheet>
           <SheetTrigger className="md:hidden">
-            <Menu className="stroke-3"/>
+            <Menu className="stroke-3" />
           </SheetTrigger>
           <SheetContent side="left" className="bg-gray-900 border-none text-white font-bold px-5 py-10 w-60 h-full">
             <SheetTitle></SheetTitle>
@@ -55,6 +62,7 @@ export default function Navbar({ items }: { items: Item[] })  {
               <SheetClose asChild><Link href="/">Home</Link></SheetClose>
               <SheetClose asChild><Link href="/about-us">About Us</Link></SheetClose>
               <SheetClose asChild><Link href="/destinations">Destinations</Link></SheetClose>
+              <SheetClose asChild><Link href="/food">Food</Link></SheetClose>
             </nav>
           </SheetContent>
         </Sheet>
@@ -72,43 +80,44 @@ export default function Navbar({ items }: { items: Item[] })  {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild><Link href="/destinations" className={linkClasses}>Destinations</Link></NavigationMenuLink>
               </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild><Link href="/food" className={linkClasses}>Food</Link></NavigationMenuLink>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
 
         {/* Search */}
-        <form onSubmit={handleSubmit}>
-          <div className="relative">
-            <InputGroup className="border-gray-600">
-              <InputGroupInput
-                placeholder="Search destinations.."
-                value={query}
-                onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
-                onBlur={() => { setTimeout(() => setOpen(false), 100); }}
-                onFocus={() => setOpen(true)}
-              />
-              <InputGroupButton type="submit">
-                <Search className="w-5 h-5 stroke-4" />
-              </InputGroupButton>
-            </InputGroup>
+        <form onSubmit={handleSubmit} className="relative">
+          <InputGroup className="border-gray-600">
+            <InputGroupInput
+              placeholder="Search"
+              value={query}
+              onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
+              onBlur={() => { setTimeout(() => setOpen(false), 100); }}
+              onFocus={() => setOpen(true)}
+            />
+            <InputGroupButton type="submit">
+              <Search className="w-5 h-5 stroke-4" />
+            </InputGroupButton>
+          </InputGroup>
 
-            {open && query !== "" && filteredItems.length > 0 && (
-              <div className="absolute left-0 right-0 mt-2 z-50 rounded-md shadow-md" onMouseDown={(e) => e.preventDefault()}>
-                <Command>
-                  <CommandGroup className="bg-gray-900 text-white border border-gray-600">
-                    {filteredItems.map((item, index) => (
-                      <CommandItem
-                        key={`${item.link}-${index}`}
-                        onSelect={() => { router.push(`/destinations/${item.link}`); setQuery(""); setOpen(false); }}
-                      >
-                        {item.name}
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </Command>
-              </div>
-            )}
-          </div>
+          {open && query !== "" && filteredItems.length > 0 && (
+            <div className="absolute left-0 right-0 mt-2 z-50 rounded-md shadow-md" onMouseDown={(e) => e.preventDefault()}>
+              <Command>
+                <CommandGroup className="bg-gray-900 text-white border border-gray-600">
+                  {filteredItems.map((item, index) => (
+                    <CommandItem
+                      key={`${item.path}-${index}`}
+                      onSelect={() => { router.push(item.path); setQuery(""); setOpen(false); }}
+                    >
+                      {item.name}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </Command>
+            </div>
+          )}
         </form>
       </div>
     </div>
