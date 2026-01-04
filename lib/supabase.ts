@@ -5,10 +5,10 @@ export const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
-export async function retrieveDestinations(category?: string) {
+export async function retrieveData(type: string, category?: string) {
   let query = supabase
-    .from("destinations")
-    .select("slug, destination, location");
+    .from(type)
+    .select("slug, name, description");
 
   if (category) query = query.eq("category", category);
 
@@ -22,9 +22,9 @@ export async function retrieveDestinations(category?: string) {
   return data ?? [];
 }
 
-export async function getAllDestinationSlugs(options?: { excludeCategory?: string; includeCategory?: string }): Promise<string[]> {
+export async function getAllSlugs(type: string, options?: { excludeCategory?: string; includeCategory?: string }): Promise<string[]> {
   const { data, error } = await supabase
-    .from("destinations")
+    .from(type)
     .select("slug, category");
 
   if (error) {
@@ -45,15 +45,15 @@ export async function getAllDestinationSlugs(options?: { excludeCategory?: strin
   return filtered.map(d => d.slug as string);
 }
 
-export async function getDestinationBySlug(slug: string) {
+export async function getInfoBySlug(type: string, slug: string) {
   const { data, error } = await supabase
-    .from("destinations")
-    .select("destination, location, content, embed")
+    .from(type)
+    .select("name, description, content, embed")
     .eq("slug", slug)
     .maybeSingle();
 
   if (error) {
-    console.error("Supabase error in getDestinationBySlug:", error);
+    console.error("Supabase error in getInfoBySlug:", error);
     return null;
   }
 

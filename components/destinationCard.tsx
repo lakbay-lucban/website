@@ -13,14 +13,15 @@ type DestinationCardProps = {
   description: string;
   link: string;
   preview: string;
+  type: string;
 };
 
-export function DestinationCard({ destination, description, link }: DestinationCardProps) {
+export function DestinationCard({ destination, description, link, type}: DestinationCardProps) {
 
   const preview = getImageBySlug(link);
   return (
     <Card className="p-0 transition-transform duration-300 hover:scale-105">
-      <Link href={`destinations/${link}`}>
+      <Link href={`${type}/${link}`}>
         <Image
           src={preview}
           alt={destination}

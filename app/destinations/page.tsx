@@ -1,14 +1,14 @@
 
 
 import { DestinationCard } from '@/components/destinationCard';
-import { retrieveDestinations } from '@/lib/supabase';
+import { retrieveData } from '@/lib/supabase';
 import { getImageBySlug } from '@/lib/utils';
 
 export default async function Home() {
 
-  const nature = await retrieveDestinations("nature");
-  const resortandhotel = await retrieveDestinations("resortandhotel");
-  const faith = await retrieveDestinations("faith");
+  const nature = await retrieveData("destinations", "nature");
+  const resortandhotel = await retrieveData("destinations","resortandhotel");
+  const faith = await retrieveData("destinations","faith");
 
   const categories = [
     { name: "Stay at Resorts and Hotels", data: resortandhotel },
@@ -29,10 +29,11 @@ export default async function Home() {
                 return (
                   <DestinationCard
                     key={d.slug}
-                    destination={d.destination}
-                    description={d.location}
+                    destination={d.name}
+                    description={d.description}
                     link={d.slug}
                     preview={image}
+                    type='destinations'
                   />
                 );
               })}

@@ -1,4 +1,4 @@
-import { getDestinationBySlug, getAllDestinationSlugs } from "@/lib/supabase";
+import { getInfoBySlug, getAllSlugs } from "@/lib/supabase";
 import { DestinationPage } from "@/components/destinationPage";
 import { notFound } from "next/navigation";
 import { getImageBySlug } from "@/lib/utils";
@@ -7,7 +7,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const slugs = await getAllDestinationSlugs();
+  const slugs = await getAllSlugs("destinations");
   return slugs.map((slug) => ({
     slug,
   }));
@@ -16,14 +16,14 @@ export async function generateStaticParams() {
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
 
-  const dest = await getDestinationBySlug(slug);
+  const dest = await getInfoBySlug("destinations", slug);
 
   const image = getImageBySlug(slug);
   if (!dest) return notFound();
 
   return (
     <DestinationPage
-      destination={dest.destination}
+      destination={dest.name}
       embed={dest.embed}
       content={dest.content}
       image={image}
