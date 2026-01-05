@@ -7,7 +7,6 @@ import { getImageBySlug } from '@/lib/utils';
 export default async function Home() {
 
   const food = await retrieveData("food");
-  console.log("FOOD DATA:", food);
 
   const categories = [
     { name: "Taste Delicacies of Lucban", data: food }
