@@ -20,18 +20,18 @@ export function DestinationCard({ destination, description, link, type}: Destina
 
   const preview = getImageBySlug(link);
   return (
-    <Card className="p-0 transition-transform duration-300 hover:scale-105">
+    <Card className="overflow-hidden p-0 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
       <Link href={`${type}/${link}`}>
         <Image
           src={preview}
           alt={destination}
           width={200}
           height={200}
-          className="h-[200px] object-cover w-50 rounded-t-md"
+          className="h-[200px] object-cover rounded-t-md"
         />
-        <CardHeader className="p-2">
-          <CardTitle>{destination}</CardTitle>
-          <CardDescription>{description}</CardDescription>
+        <CardHeader className="p-4">
+          <CardTitle className="text-base font-semibold">{destination}</CardTitle>
+          <CardDescription className="text-sm text-muted-foreground line-clamp-2">{description}</CardDescription>
         </CardHeader>
       </Link>
     </Card>
