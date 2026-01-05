@@ -9,10 +9,12 @@ export default async function Home() {
   const nature = await retrieveData("destinations", "nature");
   const resortandhotel = await retrieveData("destinations","resortandhotel");
   const faith = await retrieveData("destinations","faith");
+  const heritage = await retrieveData("destinations","heritage");
 
   const categories = [
     { name: "Stay at Resorts and Hotels", data: resortandhotel },
     { name: "Discover Nature", data: nature },
+    { name: "Explore Our Heritage", data: heritage },
     { name: "Visit Faith Sites", data: faith },
   ];
 
