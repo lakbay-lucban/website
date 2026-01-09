@@ -59,7 +59,7 @@ export function DestinationPage({ destination, embed, content, category = "DESTI
             </ReactMarkdown>
           </div>
 
-          <div>
+          <div className="justify-items-center">
              <iframe className="border-0 h-65 w-75 rounded-xl" src={embed} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
