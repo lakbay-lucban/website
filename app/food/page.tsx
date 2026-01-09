@@ -1,40 +1,40 @@
-
-
-import { DestinationCard } from '@/components/destinationCard';
-import { retrieveData } from '@/lib/supabase';
-import { getImageBySlug } from '@/lib/utils';
+import { retrieveData } from "@/lib/supabase";
+import { getImageBySlug } from "@/lib/utils";
+import Image from "next/image";
 
 export default async function Home() {
 
   const food = await retrieveData("food");
 
-  const categories = [
-    { name: "Taste Delicacies of Lucban", data: food }
-  ];
-
   return (
-    <div className='flex flex-col items-center w-full px-4 py-15'>
-      <div className='text-center py-10 w-full max-w-7xl'>
-        {categories.map((cat) => (
-          <div key={cat.name}>
-            <span className='font-bold text-2xl'>{cat.name}</span>
-            <div className='grid gap-4 py-8 text-justify grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(200px,auto))] justify-center'>
-               {cat.data.map((d) => {
-                const image = getImageBySlug(d.slug);
-                return (
-                  <DestinationCard
-                    key={d.slug}
-                    destination={d.name}
-                    description={d.description}
-                    link={d.slug}
-                    preview={image}
-                    type='food'
-                  />
-                );
-              })}
+    <div className="flex flex-col items-center w-full px-4 py-25">
+      <div className="w-full max-w-6xl ">
+        <div className="flex justify-center mb-8">
+          <h2 className="text-2xl font-bold">Local Food & Delicacies</h2>
+        </div>
+        <hr/>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
+          {food.map((item, idx) => (
+            <div
+              key={idx}
+              id={item.slug}
+              className="flex items-start space-x-4 border-b pb-4 last:border-b-0"
+            >
+              <div className="w-30 h-45 relative shrink-0">
+                <Image
+                  src={getImageBySlug(item.slug)}
+                  alt={item.name}
+                  fill
+                  className="object-cover rounded"
+                />
+              </div>
+              <div>
+                <h3 className="font-bold text-lg">{item.name}</h3>
+                <p className="text-gray-700 mt-1">{item.description}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
