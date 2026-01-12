@@ -24,7 +24,6 @@ export default async function Home() {
         {categories.map((cat) => (
           <div key={cat.name}>
             <span className='font-bold text-2xl'>{cat.name}</span>
-            <br/><br/><hr/>
             <div className='grid gap-4 py-8 text-justify grid-cols-1 sm:grid-cols-3 md:grid-cols-4 justify-center'>
                {cat.data.map((d) => {
                 const image = getImageBySlug(d.slug);
