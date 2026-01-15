@@ -10,17 +10,15 @@ type DestinationCardProps = {
   destination: string;
   description: string;
   link: string;
-  preview: string;
-  type: string;
 };
 
-export function DestinationCard({ destination, link, type}: DestinationCardProps) {
+export function DestinationCard({ destination, link}: DestinationCardProps) {
 
   const preview = getImageBySlug(link);
   return (
     <div className="relative">
       <Card className="overflow-hidden p-0 w-full">
-        <Link href={`${type}/${link}`} className="block w-full h-50 relative">
+        <Link href={`destinations/${link}`} className="block w-full h-50 relative">
           <Image
             src={preview}
             alt={destination}

@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import { getImageBySlug } from "@/lib/utils";
 import { useParams } from "next/navigation";
+import { Phone, Mail, Facebook, MapPin } from "lucide-react";
 
 
 type DestinationPageProps = {
@@ -13,10 +14,10 @@ type DestinationPageProps = {
   image: string | string[];
   embed: string;
   content?: string;
-  location?: string;
+  description?: string;
 };
 
-export function DestinationPage({ destination, embed, content, location}: DestinationPageProps) {
+export function DestinationPage({ destination, embed, content, description}: DestinationPageProps) {
   const params = useParams();
   const slug = params.slug as string;
   const image = getImageBySlug(slug);
@@ -28,16 +29,16 @@ export function DestinationPage({ destination, embed, content, location}: Destin
           <ShowcaseCarousel images={image}/>
     
           <div className="absolute inset-0 flex items-center px-15 md:px-25 text-shadow-md text-shadow-black">
-    
+
             <h1 className="text-white font-bold">
               <span className="text-lg">
-                DESTINATION
+                DESTINATION<br/>
               </span>
               <span className="text-4xl">
                 {destination}<br/>
               </span>
               <span className="text-lg">
-                {location}
+                {description}
               </span>
             </h1>
           </div>
@@ -58,8 +59,18 @@ export function DestinationPage({ destination, embed, content, location}: Destin
             </ReactMarkdown>
           </div>
 
-          <div className="justify-items-center">
-             <iframe className="border-0 h-65 w-75 rounded-xl" src={embed} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+          <div>
+            <div className="justify-items-center">
+              <iframe className="border-0 h-65 w-full rounded-xl" src={embed} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <br/>
+            <span className="font-bold">About This Page</span><br/><br/>
+            <div className="flex flex-col gap-3">
+              <span className="flex gap-2"><Phone/>+63 977 654 0972</span>
+              <span className="flex gap-2"><Mail/>mrcusclpe@gmail.com</span>
+              <span className="flex gap-2"><Facebook/>Kamay ni Hesus</span>
+              <span className="flex gap-2"><MapPin/>Sitio Kanluran, Brgy. Aliliw</span>
+            </div>
           </div>
         </div>
       </div>

@@ -34,7 +34,6 @@ export default async function Home() {
                     destination={d.name}
                     description={d.description}
                     link={d.slug}
-                    preview={image}
                   />
                 );
               })}
