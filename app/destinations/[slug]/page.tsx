@@ -29,7 +29,7 @@ export default async function Page({ params }: PageProps) {
       embed={dest.embed}
       content={dest.content}
       image={image}
-      location={dest.description}
+      description={dest.description}
     />
   );
 }
