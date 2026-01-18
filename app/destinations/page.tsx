@@ -5,10 +5,8 @@ import { retrieveData } from '@/lib/supabase';
 import { getImageBySlug } from '@/lib/utils';
 
 export default async function Home() {
-  // Single query to fetch all destinations (much faster than 4 separate queries)
   const allDestinations = await retrieveData("destinations");
 
-  // Group destinations by category in JavaScript
   const groupedByCategory = {
     nature: allDestinations.filter(d => d.category === "nature"),
     resortandhotel: allDestinations.filter(d => d.category === "resortandhotel"),
