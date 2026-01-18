@@ -71,7 +71,7 @@ export default function LoginPage() {
                         {error}
                         </div>
                     )}
-                    <Button type="submit" className="w-full" disabled={loading}>
+                    <Button type="submit" className="w-full bg-gray-900" disabled={loading}>
                         {loading ? "Signing in..." : "Sign in"}
                     </Button>
                 </FieldGroup>

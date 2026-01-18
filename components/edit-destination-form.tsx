@@ -160,7 +160,7 @@ export default function EditDestinationForm({ destination }: EditDestinationForm
                             Destination updated successfully!
                         </div>
                     )}
-                    <Button type="submit" disabled={loading}>{loading ? "Saving..." : "Save Changes"}</Button>
+                    <Button type="submit" className="bg-gray-900" disabled={loading}>{loading ? "Saving..." : "Save Changes"}</Button>
                     <Button type="button" variant="outline" onClick={() => router.push("/dashboard")}>Cancel</Button>
                 </FieldSet>
             </FieldGroup>
