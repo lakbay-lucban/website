@@ -30,6 +30,7 @@ export default async function Page({ params }: PageProps) {
       content={dest.content}
       image={image}
       description={dest.description}
+      aboutPage={dest.about_page}
     />
   );
 }

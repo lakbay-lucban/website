@@ -9,15 +9,23 @@ import { useParams } from "next/navigation";
 import { Phone, Mail, Facebook, MapPin } from "lucide-react";
 
 
+type AboutPage = {
+  phone?: string;
+  email?: string;
+  facebook?: string;
+  address?: string;
+};
+
 type DestinationPageProps = {
   destination: string;
   image: string | string[];
   embed: string;
   content?: string;
   description?: string;
+  aboutPage?: AboutPage | null;
 };
 
-export function DestinationPage({ destination, embed, content, description}: DestinationPageProps) {
+export function DestinationPage({ destination, embed, content, description, aboutPage}: DestinationPageProps) {
   const params = useParams();
   const slug = params.slug as string;
   const image = getImageBySlug(slug);
@@ -63,14 +71,18 @@ export function DestinationPage({ destination, embed, content, description}: Des
             <div className="justify-items-center">
               <iframe className="border-0 h-65 w-full rounded-xl" src={embed} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
+            {aboutPage && (
+              <>
             <br/>
             <span className="font-bold">About This Page</span><br/><br/>
             <div className="flex flex-col gap-3">
-              <span className="flex gap-2"><Phone/>+63 000 000 0000</span>
-              <span className="flex gap-2"><Mail/>your-email@gmail.com</span>
-              <span className="flex gap-2"><Facebook/>Juan Dela Cruz</span>
-              <span className="flex gap-2"><MapPin/>Sample St., Brgy. Example</span>
+                  {aboutPage.phone && <span className="flex gap-2"><Phone/>{aboutPage.phone}</span>}
+                  {aboutPage.email && <span className="flex gap-2"><Mail/>{aboutPage.email}</span>}
+                  {aboutPage.facebook && <span className="flex gap-2"><Facebook/>{aboutPage.facebook}</span>}
+                  {aboutPage.address && <span className="flex gap-2"><MapPin/>{aboutPage.address}</span>}
             </div>
+              </>
+            )}
           </div>
         </div>
       </div>

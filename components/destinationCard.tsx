@@ -10,15 +10,20 @@ type DestinationCardProps = {
   destination: string;
   description: string;
   link: string;
+  toDashboard?: boolean;
 };
 
-export function DestinationCard({ destination, link}: DestinationCardProps) {
+export function DestinationCard({ destination, link, toDashboard = false}: DestinationCardProps) {
 
-  const preview = getImageBySlug(link);
+  const preview = getImageBySlug(link ?? "");
+  const direct = toDashboard
+    ? `/dashboard/${link}`
+    : `/destinations/${link}`;
+
   return (
     <div className="relative">
       <Card className="overflow-hidden p-0 w-full">
-        <Link href={`destinations/${link}`} className="block w-full h-50 relative">
+        <Link href={direct} className="block w-full h-50 relative">
           <Image
             src={preview}
             alt={destination}

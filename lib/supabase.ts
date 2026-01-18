@@ -48,7 +48,7 @@ export async function getAllSlugs(type: string, options?: { excludeCategory?: st
 export async function getInfoBySlug(type: string, slug: string) {
   const { data, error } = await supabase
     .from(type)
-    .select("name, description, content, embed")
+    .select("name, description, content, embed, about_page")
     .eq("slug", slug)
     .maybeSingle();
 
@@ -58,4 +58,36 @@ export async function getInfoBySlug(type: string, slug: string) {
   }
 
   return data;
+}
+
+// Dashboard functions - require authentication
+export async function getDestinationWithOwner(slug: string) {
+  const { data, error } = await supabase
+    .from("destinations")
+    .select("slug, name, description, content, embed, about_page, owner_id")
+    .eq("slug", slug)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Supabase error in getDestinationWithOwner:", error);
+    return null;
+  }
+
+  return data;
+}
+
+// Note: For dashboard, use server-side client directly in server components
+// This function is kept for backwards compatibility but may not work for authenticated queries
+export async function getDestinationsByOwner(ownerId: string) {
+  const { data, error } = await supabase
+    .from("destinations")
+    .select("slug, name, description")
+    .eq("owner_id", ownerId);
+
+  if (error) {
+    console.error("Supabase error in getDestinationsByOwner:", error);
+    return [];
+  }
+
+  return data ?? [];
 }
