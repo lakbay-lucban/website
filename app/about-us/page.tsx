@@ -8,13 +8,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { getImageBySlug } from "@/lib/utils";
 
 
 export default function Home() {
   return (
     <div>
       <div className="relative w-full">
-          <ShowcaseCarousel images={"/about-us.jpg"} />
+          <ShowcaseCarousel images={getImageBySlug("about-us")} />
       
           <h1 className="absolute top-1/2 md:left-10 transform -translate-y-1/2 text-5xl md:text-left text-center font-bold px-15 text-white text-shadow-md text-shadow-black pointer-events-none">
           <span className="text-4xl">About Us</span>
