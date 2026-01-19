@@ -102,7 +102,8 @@ export default function EditDestinationForm({ destination }: EditDestinationForm
     <Card>
        <div className="px-5">
             <FieldGroup>
-                <FieldSet>
+                <form onSubmit={handleSubmit}>
+                    <FieldSet>
                     <FieldLegend>Basic Information</FieldLegend>
                     <FieldGroup className="flex flex-col gap-3">
                         <FieldLabel>Name *</FieldLabel>
@@ -116,9 +117,9 @@ export default function EditDestinationForm({ destination }: EditDestinationForm
                         <FieldLabel>Google Maps Link *</FieldLabel>
                         <Input id="embed" type="url" value={embed} onChange={(e) => setEmbed(e.target.value)} required placeholder="https://www.google.com/maps/embed?..."/>
                     </FieldGroup>
-                </FieldSet>
-                <FieldSeparator/>
-                <FieldSet>
+                  </FieldSet>
+                  <FieldSeparator/>
+                  <FieldSet>
                     <FieldLegend>Content</FieldLegend>
                     <div data-color-mode="light">
                         <div className="md:hidden flex flex-col gap-5">
@@ -128,8 +129,8 @@ export default function EditDestinationForm({ destination }: EditDestinationForm
                             <MDEditor value={content} onChange={(val) => setContent(val ?? "")} height="100%" preview="live"/>
                         </div>
                     </div>
-                </FieldSet>
-                <FieldSet>
+                  </FieldSet>
+                  <FieldSet>
                     <FieldLegend>Contact Information</FieldLegend>
                     <FieldGroup className="flex flex-col gap-3">
                         <FieldLabel>Phone</FieldLabel>
@@ -147,22 +148,23 @@ export default function EditDestinationForm({ destination }: EditDestinationForm
                         <FieldLabel>Address</FieldLabel>
                         <Input id="address" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Street, Barangay, City"/>
                     </FieldGroup>
-                </FieldSet>
-                <FieldSet>
-                    {error && (
-                        <div className="text-red-600 text-sm bg-red-50 p-3 rounded">
-                            {error}
-                        </div>
-                    )}
+                  </FieldSet>
+                  <FieldSet>
+                      {error && (
+                          <div className="text-red-600 text-sm bg-red-50 p-3 rounded">
+                              {error}
+                          </div>
+                      )}
 
-                    {success && (
-                        <div className="text-green-600 text-sm bg-green-50 p-3 rounded">
-                            Destination updated successfully!
-                        </div>
-                    )}
-                    <Button type="submit" className="bg-gray-900" disabled={loading}>{loading ? "Saving..." : "Save Changes"}</Button>
-                    <Button type="button" variant="outline" onClick={() => router.push("/dashboard")}>Cancel</Button>
-                </FieldSet>
+                      {success && (
+                          <div className="text-green-600 text-sm bg-green-50 p-3 rounded">
+                              Destination updated successfully!
+                          </div>
+                      )}
+                      <Button type="submit" className="bg-gray-900" disabled={loading}>{loading ? "Saving..." : "Save Changes"}</Button>
+                      <Button type="button" variant="outline" onClick={() => router.push("/dashboard")}>Cancel</Button>
+                  </FieldSet>
+                </form>
             </FieldGroup>
        </div>
     </Card>
