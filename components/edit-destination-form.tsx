@@ -102,7 +102,7 @@ export default function EditDestinationForm({ destination }: EditDestinationForm
     <Card>
        <div className="px-5">
             <FieldGroup>
-                <form onSubmit={handleSubmit}>
+                <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
                     <FieldSet>
                     <FieldLegend>Basic Information</FieldLegend>
                     <FieldGroup className="flex flex-col gap-3">
@@ -153,15 +153,16 @@ export default function EditDestinationForm({ destination }: EditDestinationForm
                       {error && (
                           <div className="text-red-600 text-sm bg-red-50 p-3 rounded">
                               {error}
+                              <br/>
                           </div>
                       )}
 
                       {success && (
                           <div className="text-green-600 text-sm bg-green-50 p-3 rounded">
                               Destination updated successfully!
+                              <br/>
                           </div>
                       )}
-                      <br/>
                       <Button type="submit" className="bg-gray-900" disabled={loading}>{loading ? "Saving..." : "Save Changes"}</Button>
                       <Button type="button" variant="outline" onClick={() => router.push("/dashboard")}>Cancel</Button>
                   </FieldSet>
