@@ -10,6 +10,7 @@ import MDEditor from '@uiw/react-md-editor';
 
 
 import {
+  FieldDescription,
     FieldGroup,
     FieldLabel,
     FieldLegend,
@@ -23,6 +24,7 @@ type Destination = {
   description: string;
   content: string | null;
   embed: string | null;
+  image: string | null;
   about_page: {
     phone?: string;
     email?: string;
@@ -41,6 +43,7 @@ export default function EditDestinationForm({ destination }: EditDestinationForm
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
+  const [image, setImage] = useState<File | null>(null);
   const [name, setName] = useState(destination.name);
   const [description, setDescription] = useState(destination.description || "");
   const [content, setContent] = useState(destination.content || "");
@@ -65,17 +68,26 @@ export default function EditDestinationForm({ destination }: EditDestinationForm
         ...(address && { address }),
       };
 
+      const formData = new FormData();
+
+      formData.append("name", name);
+      formData.append("description", description);
+      formData.append("content", content);
+      formData.append("embed", embed);
+      formData.append(
+        "about_page",
+        Object.keys(aboutPage).length > 0 ? JSON.stringify(aboutPage) : ""
+      );
+
+      if (image) {
+        formData.append("image", image);
+      }
+
       const response = await fetch(`/api/destinations/${destination.slug}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          description,
-          content,
-          embed,
-          about_page: Object.keys(aboutPage).length > 0 ? aboutPage : null,
-        }),
+        body: formData,
       });
+
 
       const data = await response.json();
 
@@ -116,6 +128,11 @@ export default function EditDestinationForm({ destination }: EditDestinationForm
                     <FieldGroup className="flex flex-col gap-3">
                         <FieldLabel>Google Maps Link *</FieldLabel>
                         <Input id="embed" type="url" value={embed} onChange={(e) => setEmbed(e.target.value)} required placeholder="https://www.google.com/maps/embed?..."/>
+                    </FieldGroup>
+                    <FieldGroup className="flex flex-col gap-3">
+                        <FieldLabel>Image *</FieldLabel>
+                        <FieldDescription>NOTE: Images may take a while to update on the page.</FieldDescription>
+                        <Input id="image" type="file" accept=".jpg" onChange={(e) => setImage(e.target.files?.[0] ?? null)}/>
                     </FieldGroup>
                   </FieldSet>
                   <FieldSeparator/>
