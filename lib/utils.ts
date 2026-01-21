@@ -21,5 +21,6 @@ export function getImageBySlug(slug: string) {
 
 export async function getAllImages(): Promise<string[]> {
   const slugs = await getAllSlugs("destinations");
-  return slugs.map(slug => `/${slug}.jpg`);
+
+  return slugs.map((slug) => getImageBySlug(slug));
 }
