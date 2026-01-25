@@ -123,11 +123,11 @@ export default function EditDestinationForm({ destination }: EditDestinationForm
                     </FieldGroup>
                     <FieldGroup className="flex flex-col gap-3">
                         <FieldLabel>Description *</FieldLabel>
-                        <Textarea id="description" rows={3} value={description} onChange={(e) => setDescription(e.target.value)} required/>
+                        <Textarea id="description" rows={3} value={description} onChange={(e) => setDescription(e.target.value)}/>
                     </FieldGroup>
                     <FieldGroup className="flex flex-col gap-3">
                         <FieldLabel>Google Maps Link *</FieldLabel>
-                        <Input id="embed" type="url" value={embed} onChange={(e) => setEmbed(e.target.value)} required placeholder="https://www.google.com/maps/embed?..."/>
+                        <Input id="embed" type="url" value={embed} onChange={(e) => setEmbed(e.target.value)} placeholder="https://www.google.com/maps/embed?..."/>
                     </FieldGroup>
                     <FieldGroup className="flex flex-col gap-3">
                         <FieldLabel>Image *</FieldLabel>
