@@ -13,10 +13,18 @@ export default async function DashboardPage() {
     redirect("/dashboard/login");
   }
 
-  const { data, error: destError } = await supabase
+  let query = supabase
   .from("destinations")
   .select("slug, name, description")
-  .eq("owner_id", user.id);
+
+  const role = user.user_metadata?.role;
+  const isSuperAdmin = role === "superadmin";
+
+  if (!isSuperAdmin) {
+    query = query.eq("owner_id", user.id);
+  }
+
+  const { data, error: destError } = await query;
 
   const destinations = data ?? [];
 

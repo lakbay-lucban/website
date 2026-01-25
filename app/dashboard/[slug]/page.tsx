@@ -19,6 +19,9 @@ export default async function EditDestinationPage({ params }: PageProps) {
     redirect("/dashboard/login");
   }
 
+  const role = user.user_metadata?.role;
+  const isSuperAdmin = role === "superadmin";
+
   // Get destination and verify ownership
   const { data: destination, error } = await supabase
     .from("destinations")
@@ -30,7 +33,7 @@ export default async function EditDestinationPage({ params }: PageProps) {
     notFound();
   }
 
-  if (destination.owner_id !== user.id) {
+  if (destination.owner_id !== user.id && !isSuperAdmin) {
     redirect("/dashboard");
   }
 
