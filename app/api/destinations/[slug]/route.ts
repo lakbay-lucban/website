@@ -10,6 +10,8 @@ export async function PUT(
     const supabase = await createClient();
     // Get current user
     const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const role = user?.user_metadata?.role;
+    const isSuperAdmin = role === "superadmin";
     
     if (authError || !user) {
       return NextResponse.json(
@@ -32,7 +34,7 @@ export async function PUT(
       );
     }
 
-    if (destination.owner_id !== user.id) {
+    if (destination.owner_id !== user.id && !isSuperAdmin) {
       return NextResponse.json(
         { error: 'Unauthorized: You do not own this destination' },
         { status: 403 }
