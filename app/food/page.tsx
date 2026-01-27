@@ -28,6 +28,7 @@ export default async function Home() {
                   fill
                   sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
                   className="object-cover rounded"
+                  loading="lazy"
                 />
               </div>
               <div>
