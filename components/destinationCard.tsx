@@ -13,9 +13,9 @@ type DestinationCardProps = {
   toDashboard?: boolean;
 };
 
-export function DestinationCard({ destination, link, toDashboard = false}: DestinationCardProps) {
+export async function DestinationCard({ destination, link, toDashboard = false}: DestinationCardProps) {
 
-  const preview = getImageBySlug(link ?? "");
+  const preview = await getImageBySlug(link ?? "");
   const direct = toDashboard
     ? `/dashboard/${link}`
     : `/destinations/${link}`;

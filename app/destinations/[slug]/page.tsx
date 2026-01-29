@@ -20,7 +20,7 @@ export default async function Page({ params }: PageProps) {
 
   const dest = await getInfoBySlug("destinations", slug);
 
-  const image = getImageBySlug(slug);
+  const image = await getImageBySlug(slug);
   if (!dest) return notFound();
 
   return (
@@ -29,6 +29,7 @@ export default async function Page({ params }: PageProps) {
       embed={dest.embed}
       content={dest.content}
       image={image}
+      slug={slug}
       description={dest.description}
       aboutPage={dest.about_page}
     />

@@ -1,11 +1,8 @@
-"use client";
-
 import { ShowcaseCarousel } from "./showcaseCarousel";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import { getImageBySlug } from "@/lib/utils";
-import { useParams } from "next/navigation";
 import { Phone, Mail, Facebook, MapPin } from "lucide-react";
 
 
@@ -23,12 +20,11 @@ type DestinationPageProps = {
   content?: string;
   description?: string;
   aboutPage?: AboutPage | null;
+  slug: string;
 };
 
-export function DestinationPage({ destination, embed, content, description, aboutPage}: DestinationPageProps) {
-  const params = useParams();
-  const slug = params.slug as string;
-  const image = getImageBySlug(slug);
+export async function DestinationPage({ destination, embed, content, description, aboutPage, slug}: DestinationPageProps) {
+  const image = await getImageBySlug(slug);
 
   return (
     <div>
