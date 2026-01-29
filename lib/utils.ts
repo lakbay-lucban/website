@@ -11,16 +11,23 @@ export function cn(...inputs: ClassValue[]) {
 //   return `/${slug}.jpg`;
 // }
 
-export function getImageBySlug(slug: string) {
-  const { data } = supabase.storage
+export async function getImageBySlug(slug: string) {
+  const { data: files } = await supabase.storage
     .from("Images")
-    .getPublicUrl(`${slug}.jpg`);
+    .list("", { search: `${slug}.jpg` });
 
-  return data.publicUrl;
+  const file = files?.find(f => f.name === `${slug}.jpg`);
+
+  const { data: urlData } = supabase.storage.from("Images").getPublicUrl(`${slug}.jpg`);
+
+  const updatedAt = file?.updated_at ? new Date(file.updated_at).getTime() : 1;
+
+  return `${urlData.publicUrl}?v=${updatedAt}`;
 }
+
 
 export async function getAllImages(): Promise<string[]> {
   const slugs = await getAllSlugs("destinations");
 
-  return slugs.map((slug) => getImageBySlug(slug));
+  return await Promise.all(slugs.map((slug) => getImageBySlug(slug)));
 }
