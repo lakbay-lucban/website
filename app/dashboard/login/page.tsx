@@ -55,7 +55,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center px-4">
       <Card className="w-full max-w-md p-8">
           <div className="flex justify-center">
-            <Image src="/logo_noborder.ico" alt="Lakbay Lucban Logo" width={86} height={86} />
+            <Image src="/logo.ico" alt="Lakbay Lucban Logo" width={86} height={86} />
           </div>
           <form onSubmit={handleSubmit} className="space-y-4">
             <FieldSet>
