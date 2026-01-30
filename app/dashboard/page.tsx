@@ -18,7 +18,7 @@ export default async function DashboardPage() {
   .from("destinations")
   .select("slug, name, description")
 
-  const role = user.user_metadata?.role;
+  const role = user.app_metadata?.role;
   const isSuperAdmin = role === "superadmin";
 
   if (!isSuperAdmin) {

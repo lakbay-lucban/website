@@ -39,7 +39,7 @@ export default async function EditDestinationPage({ params }: PageProps) {
     redirect("/dashboard/login");
   }
 
-  const role = user.user_metadata?.role;
+  const role = user.app_metadata?.role;
   const isSuperAdmin = role === "superadmin";
 
   // Get destination and verify ownership

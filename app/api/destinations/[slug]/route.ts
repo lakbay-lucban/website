@@ -89,7 +89,7 @@ export async function PUT(
     const supabase = await createClient();
     // Get current user
     const { data: { user }, error: authError } = await supabase.auth.getUser();
-    const role = user?.user_metadata?.role;
+    const role = user?.app_metadata?.role;
     const isSuperAdmin = role === "superadmin";
     
     if (authError || !user) {
@@ -200,7 +200,7 @@ export async function DELETE(
     const supabase = await createClient();
     
     const { data: { user }, error: authError } = await supabase.auth.getUser();
-    const role = user?.user_metadata?.role;
+    const role = user?.app_metadata?.role;
     const isSuperAdmin = role === "superadmin";
     
     if (authError || !user) {
