@@ -32,7 +32,7 @@ export async function DestinationCard({ destination, link, toDashboard = false}:
             className="object-cover transition-transform duration-500 ease-out hover:scale-105"
             loading="lazy"
           />
-          <CardFooter className="absolute bottom-0 left-0 p-2 text-white font-bold drop-shadow-lg bg-linear-to-t from-black/55 to-transparent w-full">
+          <CardFooter className="absolute bottom-0 left-0 p-2 text-white font-bold bg-linear-to-t from-black/45 to-transparent w-full">
             {destination}
           </CardFooter>
         </Link>

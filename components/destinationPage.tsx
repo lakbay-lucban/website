@@ -32,7 +32,7 @@ export async function DestinationPage({ destination, embed, content, description
 
           <ShowcaseCarousel images={image}/>
     
-          <div className="absolute inset-0 flex items-center px-15 md:px-25 text-shadow-md text-shadow-black">
+          <div className="absolute inset-0 flex items-center px-15 md:px-25">
 
             <h1 className="text-white font-bold">
               <span className="text-lg">
